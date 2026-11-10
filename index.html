@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ariel Müller Rui Seco da Silva - Portfólio de Engenharia da Computação</title>
+    
+    <!-- Carregando Tailwind CSS para estilização rápida e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração do Tailwind para aceitar Dark Mode baseado em classe -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6', // Azul padrão
+                        darkbg: '#0f172a',  // Fundo escuro
+                        darkcard: '#1e293b' // Card escuro
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Script inicial para evitar o "piscar" da tela branca antes de carregar o modo escuro -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+    
+    <!-- Fonte Inter do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-darkbg dark:text-gray-200 transition-colors duration-300">
+
+    <!-- Navegação (Navbar) -->
+    <header class="fixed w-full top-0 z-50 bg-white/80 dark:bg-darkbg/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Nome -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-xl font-bold tracking-tight text-primary dark:text-blue-400">
+                        &lt;Ariel/&gt;
+                    </a>
+                </div>
+                
+                <!-- Links Desktop -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#sobre" class="hover:text-primary transition">Sobre</a>
+                    <a href="#projetos" class="hover:text-primary transition">Projetos</a>
+                    <a href="#habilidades" class="hover:text-primary transition">Habilidades</a>
+                    <a href="#contato" class="hover:text-primary transition">Contato</a>
+                </nav>
+
+                <!-- Botão Dark Mode e Menu Mobile -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition" aria-label="Alternar modo escuro">
+                        <!-- Ícone Sol (aparece no modo escuro) -->
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 3.22a1 1 0 011.415 0l.708.708a1 1 0 01-1.414 1.414l-.708-.708a1 1 0 010-1.414zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zm-3.22 4.22a1 1 0 010 1.415l-.708.708a1 1 0 01-1.414-1.414l.708-.708a1 1 0 011.414 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.22-3.22a1 1 0 01-1.415 0l-.708-.708a1 1 0 011.414-1.414l.708.708a1 1 0 010 1.414zM4 10a1 1 0 01-1 1H2a1 1 0 110-2h1a1 1 0 011 1zm3.22-4.22a1 1 0 010-1.415l.708-.708a1 1 0 011.414 1.414l-.708.708a1 1 0 01-1.414 0zM10 4a6 6 0 100 12 6 6 0 000-12z"></path>
+                        </svg>
+                        <!-- Ícone Lua (aparece no modo claro) -->
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Hero (Header Principal) -->
+    <main class="pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+        <div id="sobre" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-10">
+            <p class="text-primary dark:text-blue-400 font-semibold tracking-wide uppercase mb-3">Olá, mundo! Eu sou</p>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-6 tracking-tight">
+                Ariel <br class="md:hidden"> 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400">
+                    Engenheiro da Computação
+                </span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-400 mb-8">
+                Estudante do 10º semestre focado em transformar problemas complexos em soluções práticas através de automação, desenvolvimento JavaScript e infraestrutura robusta.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#projetos" class="bg-primary hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg shadow-lg shadow-blue-500/30 transition-all transform hover:-translate-y-1">
+                    Ver Projetos
+                </a>
+                <a href="#contato" class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary font-medium py-3 px-6 rounded-lg transition-all">
+                    Falar comigo
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Seção de Projetos -->
+    <section id="projetos" class="py-20 bg-white dark:bg-darkbg border-t border-gray-100 dark:border-gray-800 transition-colors">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-10 text-center">Meus Projetos & Experiências</h2>
+            
+            <!-- Grid de Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-gray-50 dark:bg-darkcard rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 group">
+                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-4 text-green-600 dark:text-green-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Arquitetura de Chatbot (WhatsApp)</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Desenho e implementação de automação de atendimento para um cartório. Foco na triagem inteligente, redução de fila de espera e melhoria da experiência do usuário utilizando integração com APIs do WhatsApp.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full">Automação</span>
+                        <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full">APIs</span>
+                        <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full">Lógica de Negócios</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gray-50 dark:bg-darkcard rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 group">
+                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-4 text-purple-600 dark:text-purple-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Infraestrutura para IA Local</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Testes de benchmark e integração de LLMs (Large Language Models) rodando localmente usando LM Studio e VS Code. Otimização de recursos de hardware dedicado para extrair a máxima performance da IA offline.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full">LLMs</span>
+                        <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full">Hardware</span>
+                        <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full">VS Code</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-gray-50 dark:bg-darkcard rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 group">
+                    <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center mb-4 text-yellow-600 dark:text-yellow-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Projetos de Extensão (Jornada do Eu)</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Iniciativas de campo aplicadas em escolas estaduais. Foco no desenvolvimento humano, soft skills e compartilhamento de conhecimento tecnológico com a comunidade e jovens estudantes.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full">Soft Skills</span>
+                        <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full">Comunicação</span>
+                        <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full">Liderança</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-gray-50 dark:bg-darkcard rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 group">
+                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center mb-4 text-red-600 dark:text-red-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Manutenção de Hardware e TI</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Suporte técnico autônomo e avançado. Experiência em diagnósticos complexos de falhas, montagem de infraestrutura do zero e garantia de estabilidade para sistemas críticos.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full">Hardware</span>
+                        <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full">Suporte N2/N3</span>
+                        <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full">Redes</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Habilidades -->
+    <section id="habilidades" class="py-20 bg-gray-50 dark:bg-gray-900/50 transition-colors">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-10">Toolkit & Habilidades</h2>
+            
+            <div class="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+                <!-- Tags de Habilidades -->
+                <div class="px-6 py-3 bg-white dark:bg-darkcard shadow-sm border border-gray-200 dark:border-gray-700 rounded-xl text-gray-800 dark:text-gray-200 font-medium hover:scale-105 transition-transform">JavaScript (ES6+)</div>
+                <div class="px-6 py-3 bg-white dark:bg-darkcard shadow-sm border border-gray-200 dark:border-gray-700 rounded-xl text-gray-800 dark:text-gray-200 font-medium hover:scale-105 transition-transform">HTML5 & CSS3</div>
+                <div class="px-6 py-3 bg-white dark:bg-darkcard shadow-sm border border-gray-200 dark:border-gray-700 rounded-xl text-gray-800 dark:text-gray-200 font-medium hover:scale-105 transition-transform">Montagem de Hardware</div>
+                <div class="px-6 py-3 bg-white dark:bg-darkcard shadow-sm border border-gray-200 dark:border-gray-700 rounded-xl text-gray-800 dark:text-gray-200 font-medium hover:scale-105 transition-transform">LM Studio & IA Local</div>
+                <div class="px-6 py-3 bg-white dark:bg-darkcard shadow-sm border border-gray-200 dark:border-gray-700 rounded-xl text-gray-800 dark:text-gray-200 font-medium hover:scale-105 transition-transform">Suporte Técnico Nível 2/3</div>
+                <div class="px-6 py-3 bg-white dark:bg-darkcard shadow-sm border border-gray-200 dark:border-gray-700 rounded-xl text-gray-800 dark:text-gray-200 font-medium hover:scale-105 transition-transform">Lógica de Programação</div>
+                <div class="px-6 py-3 bg-white dark:bg-darkcard shadow-sm border border-gray-200 dark:border-gray-700 rounded-xl text-gray-800 dark:text-gray-200 font-medium hover:scale-105 transition-transform">APIs RESTful</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contato" class="py-20 bg-white dark:bg-darkbg transition-colors">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Vamos Conversar?</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-10">
+                Estou sempre aberto a discutir projetos envolvendo automação, suporte corporativo ou novas oportunidades no desenvolvimento web.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="mailto:seu-email@exemplo.com" class="flex items-center justify-center gap-2 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Enviar E-mail
+                </a>
+                
+                <a href="https://linkedin.com/in/seu-perfil" target="_blank" class="flex items-center justify-center gap-2 px-8 py-4 bg-[#0A66C2] text-white rounded-xl font-semibold hover:bg-[#084e96] transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+
+                <a href="https://github.com/seu-usuario" target="_blank" class="flex items-center justify-center gap-2 px-8 py-4 bg-[#333] text-white rounded-xl font-semibold hover:bg-black transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-900 py-8 text-center transition-colors">
+        <p class="text-gray-500 dark:text-gray-400 text-sm">
+            &copy; 2024 Ariel. Desenvolvido com HTML, CSS (Tailwind) e JavaScript Vanilla.
+        </p>
+    </footer>
+
+    <!-- Lógica Vanilla JavaScript para o Modo Escuro -->
+    <script>
+        // Selecionando os botões e ícones
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Função para atualizar os ícones com base no tema atual
+        function updateIcons() {
+            if (document.documentElement.classList.contains('dark')) {
+                darkIcon.classList.add('hidden');
+                lightIcon.classList.remove('hidden');
+            } else {
+                lightIcon.classList.add('hidden');
+                darkIcon.classList.remove('hidden');
+            }
+        }
+
+        // Checar o tema atual no carregamento e atualizar ícones
+        updateIcons();
+
+        // Evento de clique no botão
+        themeToggleBtn.addEventListener('click', function() {
+            // Verifica se a classe 'dark' já existe no elemento <html>
+            if (document.documentElement.classList.contains('dark')) {
+                // Se sim, remove, volta para o tema claro e salva no localStorage
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                // Se não, adiciona, vai para o tema escuro e salva
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            
+            // Atualiza os ícones após a troca
+            updateIcons();
+        });
+    </script>
+</body>
+</html>
